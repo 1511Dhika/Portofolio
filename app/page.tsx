@@ -13,10 +13,10 @@ import Navbar from "./components/Navbar/Navbar";
 
 export default function Home() {
   return (
-    <div className="min-h-screen overflow-x-hidden bg-[#19222D]">
+    <div className="min-h-screen overflow-x-hidden bg-white dark:bg-[#19222D]">
       <SplashCursor  />
       <Navbar />
-      <div className="absolute top-0 right-0 left-0 bottom-0 w-full h-full">
+      {/* <div className="absolute top-0 right-0 left-0 bottom-0 w-full h-full">
         <Squares 
           speed={0.5} 
           squareSize={40}
@@ -24,7 +24,7 @@ export default function Home() {
           borderColor='#F1FFB2'
           hoverFillColor='#C6F10E'
         />
-      </div>
+      </div> */}
       <div className="container mx-auto h-screen pt-20">
         <div className="grid grid-cols-12 ">
           <div className="col-span-6">
@@ -85,87 +85,143 @@ export default function Home() {
                   direction="top"
                   className="text-xl mb-8"
                 />
-                {/* <div className="flex items-center">
-                  <GradientText
-                    colors={["#40ffaa", "#C6F10E", "#40ffaa", "#C6F10E", "#40ffaa"]}
-                    animationSpeed={3}
-                    showBorder={false}
-                    className="px-8 py-6 rounded-lg border">
-                    Consultation Now
-                  </GradientText>
-                </div> */}
-
-                <div className="flex items-center"> 
-                  <a href="#contact">
-                    <GradientText
-                    colors={["#40ffaa", "#C6F10E", "#40ffaa", "#C6F10E", "#40ffaa"]}
-                    animationSpeed={3}
-                    showBorder={false}
-                    className="px-8 py-6 rounded-lg border">
-                    Contact me
-                    </GradientText>
-                  </a>
-                </div>
-
               </div>
             </div>
           </div>
+
           <div className="col-span-6 relative">
             <Lanyard position={[0, 0, 12]} gravity={[0, -40, 0]} />
           </div>
+
         </div>
       </div>
 
-      <div id="projects" className="container mx-auto py-20">
+      <div id="projects" className="container mx-auto py-20 px-4">
         <h2 className="text-4xl font-bold text-center text-white mb-12">My Projects</h2>
 
-        <div className="flex space-x-6 overflow-x-auto pb-4">
-          {/* Project Card */}
-          <div className="min-w-[320px] md:min-w-[400px] bg-[#2a374a] p-6 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
-            <Image src="/assets/project/e-learning.png" alt="Nama Proyek" width={500} height={300} className="rounded-md mb-4" />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+          <div className="bg-[#2a374a] p-6 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 h-full flex flex-col">
+            <div className="mb-4">
+              <Image 
+                src="/assets/project/e-learning.png" 
+                alt="E-learning Project" 
+                width={500} 
+                height={300} 
+                className="rounded-md w-full h-auto object-cover"
+              />
+            </div>
             <h3 className="text-2xl font-bold text-[#C6F10E] mb-2">E-learning</h3>
-            <p className="text-white mb-4">Project ini multi user, ada untuk admin dan user, admin bisa untuk upload modul dan upload soal, serta bisa melihat user sudah mengerjakan soal atau belum, dan untuk user bisa mengikuti ujian dan melihat materi, serta bisa melihat sertfikat yang di dapat</p>
+            <p className="text-white mb-4 flex-grow">
+              This is a multi-user project with roles for both admins and users. Admins have the ability to upload learning modules and exam questions, and also track whether users have completed the exams. Users can participate in exams, access study materials, and view the certificates they have obtained.
+            </p>
             <div className="flex flex-wrap gap-2 mb-4">
               <span className="bg-gray-700 text-white text-sm font-medium px-2.5 py-0.5 rounded">PHP</span>
               <span className="bg-gray-700 text-white text-sm font-medium px-2.5 py-0.5 rounded">Tailwind CSS</span>
               <span className="bg-gray-700 text-white text-sm font-medium px-2.5 py-0.5 rounded">JS</span>
             </div>
-            <div className="flex gap-4 mt-4">
-              <a href="https://github.com/1511Dhika/Project-elearning" 
+            <div className="mt-auto">
+              <a 
+                href="https://github.com/1511Dhika/Project-elearning" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="text-black bg-[#C6F10E] px-4 py-2 rounded-lg font-semibold">GitHub
-                  </a>
+                className="inline-block text-black bg-[#C6F10E] px-4 py-2 rounded-lg font-semibold"
+              >
+                GitHub
+              </a>
             </div>
           </div>
-          <div className="min-w-[320px] md:min-w-[400px] bg-[#2a374a] p-6 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
-            <Image src="/path-to-your-project-image.jpg" alt="Nama Proyek" width={500} height={300} className="rounded-md mb-4" />
+
+          <div className="bg-[#2a374a] p-6 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 h-full flex flex-col">
+            <div className="mb-4">
+              <Image 
+                src="/assets/project/perpus-php.png" 
+                alt="Library PHP Project" 
+                width={500} 
+                height={300} 
+                className="rounded-md w-full h-auto object-cover"
+              />
+            </div>
             <h3 className="text-2xl font-bold text-[#C6F10E] mb-2">Perpustakaan versi PHP</h3>
-            <p className="text-white mb-4">Project ini multi user, ada untuk admin dan user, admin bisa untuk upload buku melihat siapa yang meminjam, melihat yang sudah mengambalikan atau belum dan untuk user bisa meminjam buku, melihat daftar buku</p>
+            <p className="text-white mb-4 flex-grow">
+              This project supports multiple user roles: admin and user. The admin is able to upload books, track borrowers, and monitor book returns. Users can borrow books and browse the book catalog.
+            </p>
             <div className="flex flex-wrap gap-2 mb-4">
               <span className="bg-gray-700 text-white text-sm font-medium px-2.5 py-0.5 rounded">PHP</span>
               <span className="bg-gray-700 text-white text-sm font-medium px-2.5 py-0.5 rounded">Tailwind CSS</span>
               <span className="bg-gray-700 text-white text-sm font-medium px-2.5 py-0.5 rounded">JS</span>
             </div>
-            <div className="flex gap-4 mt-4">
-              <a href="https://github.com/1511Dhika/Perpustakaan-versiPHP" className="text-black bg-[#C6F10E] px-4 py-2 rounded-lg font-semibold">GitHub</a>
+            <div className="mt-auto">
+              <a 
+                href="https://github.com/1511Dhika/Perpustakaan-versiPHP" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="inline-block text-black bg-[#C6F10E] px-4 py-2 rounded-lg font-semibold"
+              >
+                GitHub
+              </a>
             </div>
           </div>
-          <div className="min-w-[320px] md:min-w-[400px] bg-[#2a374a] p-6 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
-            <Image src="/assets/project/perpus-java.png" alt="Nama Proyek" width={500} height={300} className="rounded-md mb-4" />
-            <h3 className="text-2xl font-bold text-[#C6F10E] mb-2">Perpustakaan versi Java</h3>
-            <p className="text-white mb-4">Project ini multi user, ada untuk admin dan user, admin bisa untuk upload buku melihat siapa yang meminjam, melihat yang sudah mengambalikan atau belum dan untuk user bisa meminjam buku, melihat daftar buku</p>
-            <div className="flex flex-wrap gap-2 mb-4">
-              <span className="bg-gray-700 text-white text-sm font-medium px-2.5 py-0.5 rounded">PHP</span>
-              {/* <span className="bg-gray-700 text-white text-sm font-medium px-2.5 py-0.5 rounded">Tailwind CSS</span>
-              <span className="bg-gray-700 text-white text-sm font-medium px-2.5 py-0.5 rounded">JS</span> */}
+
+          
+          <div className="bg-[#2a374a] p-6 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 h-full flex flex-col">
+            <div className="mb-4">
+              <Image 
+                src="/assets/project/perpus-java.png" 
+                alt="Library Java Project" 
+                width={500} 
+                height={300} 
+                className="rounded-md w-full h-auto object-cover"
+              />
             </div>
-            <div className="flex gap-4 mt-4">
-              <a href="https://github.com/1511Dhika/Perpustakaan" className="text-black bg-[#C6F10E] px-4 py-2 rounded-lg font-semibold">GitHub</a>
+            <h3 className="text-2xl font-bold text-[#C6F10E] mb-2">Perpustakaan versi Java</h3>
+            <p className="text-white mb-4 flex-grow">
+              This project supports multiple user roles: admin and user. The admin is able to upload books, track borrowers, and monitor book returns. Users can borrow books and browse the book catalog.
+            </p>
+            <div className="flex flex-wrap gap-2 mb-4">
+              <span className="bg-gray-700 text-white text-sm font-medium px-2.5 py-0.5 rounded">Java</span>
+            </div>
+            <div className="mt-auto">
+              <a 
+                href="https://github.com/1511Dhika/Perpustakaan" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="inline-block text-black bg-[#C6F10E] px-4 py-2 rounded-lg font-semibold"
+              >
+                GitHub
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <section id="skills" className="container mx-auto py-20 px-4 text-center">
+        <h2 className="text-4xl font-bold text-center text-white mb-12">SKILLS</h2>
+
+        <div className="flex flex-wrap justify-center gap-6">
+          <div className="bg-[#2a374a] p-6 shadow-md w-full md:w-[300px]">
+            <h3 className="text-xl font-semibold mb-4 text-[#C6F10E]">Programming Languages</h3>
+            <div className="flex flex-wrap justify-center gap-2">
+              {["JavaScript", "Python", "Java", "C++", "PHP", "HTML", "CSS", "SQL"].map((lang, index) => (
+                <span key={index} className="bg-[#0a2940] text-white text-sm px-3 py-1 rounded-full">{lang}</span>
+              ))}
+            </div>
+          </div>
+
+          <div className="bg-[#2a374a] p-6 shadow-md w-full md:w-[300px]">
+            <h3 className="text-xl font-semibold mb-4 text-[#C6F10E]">Frameworks & Libraries</h3>
+            <div className="flex flex-wrap justify-center gap-2">
+              {["Next.js", "Tailwind CSS", "Bootstrap", "CodeIgniter", "Laravel"].map((fw, index) => (
+                <span key={index} className="bg-[#0a2940] text-white text-sm px-3 py-1 rounded-full">{fw}</span>
+              ))}
             </div>
           </div>
         </div>
-      </div>
+      </section>
+
+
+
 
       <div id="contact" className="container mx-auto py-20 text-center">
         <h2 className="text-4xl font-bold text-white mb-4">Get In Touch</h2>
