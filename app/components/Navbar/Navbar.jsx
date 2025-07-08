@@ -19,7 +19,6 @@ export default function Navbar() {
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
         <h1 className="text-[#C6F10E] text-2xl font-bold">Dhika Dev</h1>
         <div className="flex items-center gap-6 text-black dark:text-white text-lg font-medium">
-          <Link href="/">Home</Link>
           <Link href="#about">About</Link>
           <Link href="#projects">Projects</Link>
           <Link href="#contact">Contact</Link>

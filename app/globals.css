@@ -28,3 +28,13 @@ body {
     text-wrap: balance;
   }
 }
+
+body > *:not([style*="translate"]) .translate-fallback {
+  display: none;
+}
+
+/* Saat Google Translate aktif, teks yang dipecah bakal diganti secara inline oleh browser.
+   Kita tampilkan versi utuh sebagai fallback */
+html[lang]:not([lang="en"]) .translate-fallback {
+  display: block !important;
+}
