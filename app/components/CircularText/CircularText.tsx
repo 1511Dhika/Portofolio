@@ -1,88 +1,85 @@
-'use client'
-import React, { useEffect, useState } from "react";
-import { motion, useAnimation } from "framer-motion";
+'use client';
+import React, { useEffect, useState } from 'react';
+import { motion, useAnimation } from 'framer-motion';
+
 
 interface CircularTextProps {
   text: string;
   spinDuration?: number;
-  onHover?: "slowDown" | "speedUp" | "pause" | "goBonkers";
+  onHover?: 'slowDown' | 'speedUp' | 'pause' | 'goBonkers';
   className?: string;
 }
 
-const getRotationTransition = (
-  duration: number,
-  from: number,
-  loop: boolean = true
-) => ({
-  from: from,
-  to: from + 360,
-  ease: "linear",
-  duration: duration,
-  type: "tween",
-  repeat: loop ? Infinity : 0,
-});
-
-const getTransition = (duration: number, from: number) => ({
-  rotate: getRotationTransition(duration, from),
-  scale: {
-    type: "spring",
-    damping: 20,
-    stiffness: 300,
-  },
+// Fungsi untuk membuat konfigurasi transition valid
+const getTransition = (duration: number): {
+  duration: number;
+  ease: [0, 0, 1, 1], // Ubah string jadi tipe fungsi
+  type: 'tween';
+} => ({
+  duration,
+  ease:  [0, 0, 1, 1], // Pakai fungsi, bukan string
+  type: 'tween',
 });
 
 const CircularText: React.FC<CircularTextProps> = ({
   text,
   spinDuration = 20,
-  onHover = "speedUp",
-  className = "",
+  onHover = 'speedUp',
+  className = '',
 }) => {
   const letters = Array.from(text);
   const controls = useAnimation();
   const [currentRotation, setCurrentRotation] = useState(0);
 
+  // Animasi awal saat komponen dimuat
   useEffect(() => {
     controls.start({
       rotate: currentRotation + 360,
       scale: 1,
-      transition: getTransition(spinDuration, currentRotation),
+      transition: getTransition(spinDuration),
     });
   }, [spinDuration, controls, onHover, text]);
 
   const handleHoverStart = () => {
     if (!onHover) return;
+
     switch (onHover) {
-      case "slowDown":
+      case 'slowDown':
         controls.start({
           rotate: currentRotation + 360,
           scale: 1,
-          transition: getTransition(spinDuration * 2, currentRotation),
+          transition: getTransition(spinDuration * 2),
         });
         break;
-      case "speedUp":
+
+      case 'speedUp':
         controls.start({
           rotate: currentRotation + 360,
           scale: 1,
-          transition: getTransition(spinDuration / 4, currentRotation),
+          transition: getTransition(spinDuration / 4),
         });
         break;
-      case "pause":
+
+      case 'pause':
         controls.start({
           rotate: currentRotation,
           scale: 1,
           transition: {
-            rotate: { type: "spring", damping: 20, stiffness: 300 },
-            scale: { type: "spring", damping: 20, stiffness: 300 },
+            type: 'spring',
+            damping: 20,
+            stiffness: 300,
           },
         });
         break;
-      case "goBonkers":
+
+      case 'goBonkers':
         controls.start({
           rotate: currentRotation + 360,
           scale: 0.8,
-          transition: getTransition(spinDuration / 20, currentRotation),
+          transition: getTransition(spinDuration / 20),
         });
         break;
+
       default:
         break;
     }
@@ -92,7 +89,7 @@ const CircularText: React.FC<CircularTextProps> = ({
     controls.start({
       rotate: currentRotation + 360,
       scale: 1,
-      transition: getTransition(spinDuration, currentRotation),
+      transition: getTransition(spinDuration),
     });
   };
 
@@ -107,9 +104,9 @@ const CircularText: React.FC<CircularTextProps> = ({
     >
       {letters.map((letter, i) => {
         const rotation = (360 / letters.length) * i;
-        const factor = Number((Math.PI / letters.length).toFixed(0));
-        const x = factor * i;
-        const y = factor * i;
+        const factor = Math.PI / letters.length;
+        const x = Math.round(Math.cos(rotation) * 60);
+        const y = Math.round(Math.sin(rotation) * 60);
         const transform = `rotateZ(${rotation}deg) translate3d(${x}px, ${y}px, 0)`;
 
         return (
