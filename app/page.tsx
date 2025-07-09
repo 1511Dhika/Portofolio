@@ -1,3 +1,4 @@
+'use client';
 import Image from "next/image";
 
 import Lanyard from "./components/Lanyard/Lanyard";
@@ -11,6 +12,8 @@ import Navbar from "./components/Navbar/Navbar";
 import ProjectCard from "./components/ProjectCard";
 import SkillCategory from "./components/SkillCategory";
 import ContactForm from "./components/ContactForm";
+import { useTranslation } from 'react-i18next';
+import '../lib/i18n';
 
 
 const projectsData = [
@@ -43,22 +46,22 @@ const skillsData = {
 };
 
 export default function Home() {
+  const { t } = useTranslation();
   return (
     <div className="min-h-screen overflow-x-hidden bg-white dark:bg-[#19222D] text-gray-900 dark:text-white">
       <SplashCursor />
       <Navbar />
 
-      <header className="container mx-auto min-h-screen px-4 flex items-center justify-center">
+      <header className="w-full px-4 py-20 flex flex-col items-center justify-center md:flex-row gap-10">
         <div className="flex flex-col md:flex-row items-center gap-8 lg:gap-16">
           
           <div className="w-full md:w-1/2 lg:w-3/5 text-center md:text-left">
           <div className="flex flex-col gap-6">
             <AnimatedContent direction="horizontal" config={{ tension: 80, friction: 20 }}>
               <div className="flex items-center justify-center md:justify-start gap-2">
-                <h1 className="text-2xl font-bold">I'm Ready For</h1>
+                <h1 className="text-2xl font-bold"> {t('readyFor')} </h1>
 
-                {/* Teks tersembunyi agar bisa ditranslate */}
-                <span className="sr-only">Web Design, Development, Programming</span>
+                <span className="sr-only"> {t('srList')} </span>
 
                 <RotatingText 
                   texts={['Web Design', 'Development', 'Programming']}
@@ -76,19 +79,18 @@ export default function Home() {
             </AnimatedContent>
 
             <div className="flex flex-col items-center md:items-start">
-              {/* Tambahan teks tersembunyi */}
-              <div className="sr-only">I'm Dhika Ramdhana</div>
+              <div className="sr-only"> {t('srName')} </div>
               <SplitText 
-                text="I'm Dhika Ramdhana"
+                text={t('name')}
                 className="text-5xl lg:text-6xl font-semibold text-center md:text-start"
                 delay={50}
                 animationFrom={{ opacity: 0, transform: 'translate3d(0,50px,0)' }}
                 animationTo={{ opacity: 1, transform: 'translate3d(0,0,0)' }}
               />
 
-              <div className="sr-only">Junior Full Stack Developer</div>
+              <div className="sr-only"> {t('srRole')} </div>
               <SplitText 
-                text="Junior Full Stack Developer"
+                text={t('role')}
                 className="text-5xl lg:text-6xl font-semibold text-center md:text-start text-[#C6F10E]"
                 delay={75}
                 animationFrom={{ opacity: 0, transform: 'translate3d(0,50px,0)' }}
@@ -96,9 +98,8 @@ export default function Home() {
               />
             </div>
 
-            {/* Tidak perlu perbaikan karena BlurText kemungkinan tetap dalam 1 elemen */}
             <BlurText 
-              text="Hi! I'm a web developer from Indonesia who loves turning cool ideas into simple, useful apps. I'm a big fan of solving problems and always curious to learn the latest tech."
+              text= {t('about')}
               delay={75}
               animateBy="words"
               className="text-lg md:text-xl max-w-2xl mx-auto md:mx-0"
@@ -108,9 +109,10 @@ export default function Home() {
 
 
 
-          <div className="w-full md:w-1/2 lg:w-2/5 h-96 md:h-auto">
+          <div className="w-full md:w-1/2 lg:w-2/5 h-96 md:h-auto mt-8 md:mt-0">
             <Lanyard position={[0, 0, 12]} gravity={[0, -40, 0]} />
           </div>
+
 
         </div>
       </header>
