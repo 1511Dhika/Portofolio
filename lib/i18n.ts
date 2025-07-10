@@ -11,8 +11,8 @@ const resources = {
       list: "WEb Design, Development, Programming",
       name: "I'm Dhika Ramdhana",
       srName: "I'm Dhika Ramdhana",
-      role: "Junior Full Stack Developer",
-      srRole: "Junior Full Stack Developer",
+      role: "Junior Full Stack Web Developer",
+      srRole: "Junior Full Stack Web Developer",
       about: "Hi! I'm a web developer from Indonesia who loves turning cool ideas into simple, useful apps. I'm a big fan of solving problems and always curious to learn the latest tech."
     }
   },
@@ -23,8 +23,8 @@ const resources = {
       list: "Desain Web, Pengembangan, Pemrograman",
       name: "Saya Dhika Ramdhana",
       srName: "Saya Dhika Ramdhana",
-      role: "Junior Full Stack Developer",
-      srRole: "Junior Full Stack Developer",
+      role: "Junior Full Stack Web Developer",
+      srRole: "Junior Full Stack Web Developer",
       about: "Hai! Saya seorang pengembang web dari Indonesia yang senang mengubah ide keren menjadi aplikasi sederhana dan berguna. Saya suka memecahkan masalah dan selalu penasaran mempelajari teknologi terbaru."
     }
   }

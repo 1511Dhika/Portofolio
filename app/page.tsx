@@ -27,7 +27,7 @@ const projectsData = [
   {
     title: "Library Management (PHP)",
     description: "This project supports admin and user roles. Admins manage book uploads, track borrowers, and monitor returns. Users can borrow books and browse the catalog.",
-    imageUrl: "/assets/project/perpus-php.png",
+    imageUrl: "",
     techStack: ["PHP", "Tailwind CSS", "JavaScript"],
     githubUrl: "https://github.com/1511Dhika/Perpustakaan-versiPHP",
   },
@@ -52,67 +52,64 @@ export default function Home() {
       <SplashCursor />
       <Navbar />
 
-      <header className="w-full px-4 py-20 flex flex-col items-center justify-center md:flex-row gap-10">
-        <div className="flex flex-col md:flex-row items-center gap-8 lg:gap-16">
+      <header className="w-full px-4 py-20 flex flex-col items-center justify-center md:flex-row gap-6">
+        <div className="flex flex-col md:flex-row items-center gap-8 lg:gap-10">
           
           <div className="w-full md:w-1/2 lg:w-3/5 text-center md:text-left">
-          <div className="flex flex-col gap-6">
-            <AnimatedContent direction="horizontal" config={{ tension: 80, friction: 20 }}>
-              <div className="flex items-center justify-center md:justify-start gap-2">
-                <h1 className="text-2xl font-bold"> {t('readyFor')} </h1>
+            <div className="flex flex-col gap-6">
+              <AnimatedContent direction="horizontal" config={{ tension: 80, friction: 20 }}>
+                <div className="flex items-center justify-center md:justify-start gap-2">
+                  <h1 className="text-2xl font-bold"> {t('readyFor')} </h1>
 
-                <span className="sr-only"> {t('srList')} </span>
+                  <span className="sr-only"> {t('srList')} </span>
 
-                <RotatingText 
-                  texts={['Web Design', 'Development', 'Programming']}
-                  mainClassName="px-3 bg-[#C6F10E] text-black overflow-hidden py-1 justify-center rounded-lg text-2xl font-bold inline-flex"
-                  staggerFrom="last"
-                  initial={{ y: "100%" }}
-                  animate={{ y: 0 }}
-                  exit={{ y: "-120%" }}
-                  staggerDuration={0.025}
-                  splitLevelClassName="overflow-hidden pb-1"
-                  transition={{ type: "spring", damping: 30, stiffness: 400 }}
-                  rotationInterval={2000}
+                  <RotatingText 
+                    texts={['Web Design', 'Development', 'Programming']}
+                    mainClassName="px-3 bg-[#C6F10E] text-black overflow-hidden py-1 justify-center rounded-lg text-2xl font-bold inline-flex"
+                    staggerFrom="last"
+                    initial={{ y: "100%" }}
+                    animate={{ y: 0 }}
+                    exit={{ y: "-120%" }}
+                    staggerDuration={0.025}
+                    splitLevelClassName="overflow-hidden pb-1"
+                    transition={{ type: "spring", damping: 30, stiffness: 400 }}
+                    rotationInterval={2000}
+                  />
+                </div>
+              </AnimatedContent>
+
+              <div className="flex flex-col items-center md:items-start">
+                <div className="sr-only"> {t('srName')} </div>
+                <SplitText 
+                  text={t('name')}
+                  className="text-5xl lg:text-6xl font-semibold text-center md:text-start"
+                  delay={50}
+                  animationFrom={{ opacity: 0, transform: 'translate3d(0,50px,0)' }}
+                  animationTo={{ opacity: 1, transform: 'translate3d(0,0,0)' }}
+                />
+
+                <div className="sr-only"> {t('srRole')} </div>
+                <SplitText 
+                  text={t('role')}
+                  className="text-5xl lg:text-6xl font-semibold text-center md:text-start text-[#C6F10E]"
+                  delay={75}
+                  animationFrom={{ opacity: 0, transform: 'translate3d(0,50px,0)' }}
+                  animationTo={{ opacity: 1, transform: 'translate3d(0,0,0)' }}
                 />
               </div>
-            </AnimatedContent>
 
-            <div className="flex flex-col items-center md:items-start">
-              <div className="sr-only"> {t('srName')} </div>
-              <SplitText 
-                text={t('name')}
-                className="text-5xl lg:text-6xl font-semibold text-center md:text-start"
-                delay={50}
-                animationFrom={{ opacity: 0, transform: 'translate3d(0,50px,0)' }}
-                animationTo={{ opacity: 1, transform: 'translate3d(0,0,0)' }}
-              />
-
-              <div className="sr-only"> {t('srRole')} </div>
-              <SplitText 
-                text={t('role')}
-                className="text-5xl lg:text-6xl font-semibold text-center md:text-start text-[#C6F10E]"
+              <BlurText 
+                text= {t('about')}
                 delay={75}
-                animationFrom={{ opacity: 0, transform: 'translate3d(0,50px,0)' }}
-                animationTo={{ opacity: 1, transform: 'translate3d(0,0,0)' }}
+                animateBy="words"
+                className="text-lg md:text-xl max-w-2xl mx-auto md:mx-0"
               />
             </div>
-
-            <BlurText 
-              text= {t('about')}
-              delay={75}
-              animateBy="words"
-              className="text-lg md:text-xl max-w-2xl mx-auto md:mx-0"
-            />
           </div>
-        </div>
-
-
 
           <div className="w-full md:w-1/2 lg:w-2/5 h-96 md:h-auto mt-8 md:mt-0">
             <Lanyard position={[0, 0, 12]} gravity={[0, -40, 0]} />
           </div>
-
 
         </div>
       </header>
